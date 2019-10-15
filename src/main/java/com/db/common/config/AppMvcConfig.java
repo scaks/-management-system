@@ -1,5 +1,6 @@
 package com.db.common.config;
 
+
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Controller;
@@ -9,10 +10,9 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @ComponentScan(value = "com.db",
-                useDefaultFilters = false,//取消默认过滤器
-                    includeFilters = {@ComponentScan.Filter(//只加载指定注解修饰的类
-                        type = FilterType.ANNOTATION,classes = {
-                                Controller.class, ControllerAdvice.class})})
+        includeFilters={@ComponentScan.Filter(type= FilterType.ANNOTATION,
+                classes={Controller.class, ControllerAdvice.class})},
+        useDefaultFilters=false)
 @EnableWebMvc
 public class AppMvcConfig extends WebMvcConfigurerAdapter {
 
