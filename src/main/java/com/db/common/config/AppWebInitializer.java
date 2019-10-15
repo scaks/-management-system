@@ -1,6 +1,10 @@
 package com.db.common.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import org.springframework.web.util.Log4jConfigListener;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
 /**
  * 此类中负责执行前端控制器以及相关bean组件的加载和注册
@@ -28,6 +32,16 @@ public class AppWebInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected String[] getServletMappings() {
         return new String[]{"*.do"};
+    }
+
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        // TODO Auto-generated method stub
+        servletContext.addListener(Log4jConfigListener.class);
+        servletContext.setInitParameter("webAppRootKey", "spring4.root");
+        servletContext.setInitParameter("log4jConfigLocation", "classpath:log4j.properties");
+        servletContext.setInitParameter("log4jRefreshInterval", "10000");
+        super.onStartup(servletContext);
     }
 
 }
