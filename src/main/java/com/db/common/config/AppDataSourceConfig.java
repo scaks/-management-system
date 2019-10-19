@@ -13,10 +13,10 @@ import javax.sql.DataSource;
 public class AppDataSourceConfig {
 
     /**配置数据源对象:druid*/
-    @Bean("dataSource")
+    @Bean(value="dataSource")
     public DataSource newDataSource(Environment env) {
         DruidDataSource ds = new DruidDataSource();
-        ds.setDriverClassName(env.getProperty("jdbcDriver"));
+        //ds.setDriverClassName(env.getProperty("jdbcDriver"));
         ds.setUrl(env.getProperty("jdbcUrl"));
         ds.setUsername(env.getProperty("jdbcUser"));
         ds.setPassword(env.getProperty("jdbcPassword"));

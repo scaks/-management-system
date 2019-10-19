@@ -17,6 +17,7 @@ public class AppWebInitializer extends AbstractAnnotationConfigDispatcherServlet
      */
     @Override
     protected Class<?>[] getRootConfigClasses() {
+        System.out.println("--getRootConfigClasses--");
         return new Class[]{AppRootConfig.class};
     }
     /**
@@ -24,6 +25,7 @@ public class AppWebInitializer extends AbstractAnnotationConfigDispatcherServlet
      */
     @Override
     protected Class<?>[] getServletConfigClasses() {
+        System.out.println("--getServletConfigClasses--");
         return new Class[]{AppMvcConfig.class};
     }
     /**
@@ -31,12 +33,14 @@ public class AppWebInitializer extends AbstractAnnotationConfigDispatcherServlet
      */
     @Override
     protected String[] getServletMappings() {
+        System.out.println("--getServletMappings--");
         return new String[]{"*.do"};
     }
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         // TODO Auto-generated method stub
+        System.out.println("--onStartup--");
         servletContext.addListener(Log4jConfigListener.class);
         servletContext.setInitParameter("webAppRootKey", "spring4.root");
         servletContext.setInitParameter("log4jConfigLocation", "classpath:log4j.properties");
