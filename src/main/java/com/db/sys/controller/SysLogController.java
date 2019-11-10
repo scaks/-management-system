@@ -1,5 +1,6 @@
 package com.db.sys.controller;
 
+import com.db.common.vo.JsonResult;
 import com.db.common.vo.PageObject;
 import com.db.sys.entity.SysLog;
 import com.db.sys.service.SysLogService;
@@ -22,9 +23,15 @@ public class SysLogController {
 
     @ResponseBody
     @RequestMapping("doFindPageObjects")
-    public PageObject<SysLog> doFindPageObjects(String username, Integer pageCurrent){
+    public JsonResult doFindPageObjects(String username, Integer pageCurrent){
         PageObject<SysLog> pageObject = sysLogService.findObjects(username, pageCurrent);
-        return pageObject;
+        return new JsonResult(pageObject);
     }
 
+    @RequestMapping("doDeleteObjects")
+    @ResponseBody
+    public JsonResult doDeleteObjects(Integer... ids){
+        int row = sysLogService.deleteObjects(ids);
+        return new JsonResult("delete "+row+" row");
+    }
 }

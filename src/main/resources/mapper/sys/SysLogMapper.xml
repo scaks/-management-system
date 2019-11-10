@@ -4,15 +4,36 @@
 
 <mapper namespace="com.db.sys.dao.SysLogDao">
 
+
     <select id="getRowCount" resultType="int">
         select count(*) from sys_logs
-        where username like concat("%",#{username},"%");
+        <include refid="queryWhereId"/>;
     </select>
 
+    <delete id="deleteObjects">
+        delete from sys_Logs
+        where id in
+        <foreach collection="ids"
+                 open="("
+                 close=")"
+                 separator=","
+                 item="id">
+            #{id}
+        </foreach>
+    </delete>
+
     <select id="findPageObjects" resultType="com.db.sys.entity.SysLog">
-        select * from sys_logs where username like concat("%",#{username},"%")
+        select * from sys_logs <include refid="queryWhereId"/>
         order by createdTime desc
         limit #{startIndex},#{pageSize};
     </select>
+
+    <sql id="queryWhereId">
+        <where>
+            <if test="username!=null and username!=''">
+                username like concat("%",#{username},"%")
+            </if>
+        </where>
+    </sql>
 
 </mapper>

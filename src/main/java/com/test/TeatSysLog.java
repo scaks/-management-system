@@ -12,4 +12,13 @@ public class TeatSysLog extends TestBase{
         System.out.println(rowCount);
 
     }
+
+    @Test
+    public void testDelete(){
+        SysLogDao dao = cc.getBean("sysLogDao", SysLogDao.class);
+        System.out.println(dao.getClass().getName());
+        int rowCount = dao.deleteObjects(52,32);
+        System.out.println(rowCount);
+    }
+
 }

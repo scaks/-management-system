@@ -1,8 +1,9 @@
-public class leetcode374 {
-    int x = 4;
+
+public class BinarySearch {
+    private int x = 111;
     public static void main(String[] args) {
-        leetcode374 lee = new leetcode374();
-        int i = lee.guessNumber(10);
+        BinarySearch lee = new BinarySearch();
+        int i = lee.guessNumber(10000);
         System.out.println(i);
     }
 
@@ -31,4 +32,5 @@ public class leetcode374 {
             return 0;
         }
     }
+
 }

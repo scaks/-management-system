@@ -46,6 +46,22 @@ public class SysLogServiceImpl implements SysLogService {
         pageObject.setRowCount(rowCount);
         //5.返回封装结果。
         return pageObject;
-
     }
+
+    @Override
+    public int deleteObjects(Integer... ids) {
+        if(null == ids || ids.length==0)
+            throw new IllegalArgumentException("没有选中记录");
+        int rows;
+        try {
+            rows = sysLogDao.deleteObjects(ids);
+        }catch (Throwable e){
+            e.printStackTrace();
+            throw new ServiceException("系统故障");
+        }
+        if(rows==0)
+            throw  new ServiceException("记录不存在");
+        return rows;
+    }
+
 }
