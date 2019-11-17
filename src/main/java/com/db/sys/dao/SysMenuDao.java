@@ -11,4 +11,5 @@ public interface SysMenuDao {
 
     int deleteObject(@Param("id") Integer id);
 
+    int getChildCount(@Param("id") Integer id);
 }

@@ -1,6 +1,7 @@
 package com.test;
 
 import com.db.sys.dao.SysLogDao;
+import com.db.sys.dao.SysMenuDao;
 import org.junit.Test;
 
 public class TeatSysLog extends TestBase{
@@ -15,9 +16,9 @@ public class TeatSysLog extends TestBase{
 
     @Test
     public void testDelete(){
-        SysLogDao dao = cc.getBean("sysLogDao", SysLogDao.class);
+        SysMenuDao dao = cc.getBean("sysMenuDao", SysMenuDao.class);
         System.out.println(dao.getClass().getName());
-        int rowCount = dao.deleteObjects(52,32);
+        int rowCount = dao.deleteObject(162);
         System.out.println(rowCount);
     }
 

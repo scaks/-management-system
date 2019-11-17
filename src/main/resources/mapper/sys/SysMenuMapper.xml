@@ -10,4 +10,12 @@
         on c.parentId=p.id
     </select>
 
+    <select id="getChildCount" resultType="int">
+        select count(*) from sys_menus where parentId=#{id};
+    </select>
+
+    <delete id="deleteObject" >
+        delete from sys_menus where id=#{id};
+    </delete>
+
 </mapper>
