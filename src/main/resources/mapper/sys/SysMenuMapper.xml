@@ -18,4 +18,31 @@
         delete from sys_menus where id=#{id};
     </delete>
 
+    <select id="findZtreeMenuNodes" resultType="com.db.common.vo.Node">
+        select id,name,parentId from sys_menus;
+    </select>
+
+    <insert id="insertObject">
+        insert into sys_menus
+          (name,url,type,sort,note,parentId,permission,
+          createdTime,modifiedTime,createdUser,modifiedUser)
+          values
+          (#{name},#{url},#{type},#{sort},#{note},#{parentId},#{permission},
+          now(),now(),#{createdUser},#{modifiedUser})
+
+    </insert>
+
+    <update id="updateObject">
+        update sys_menus set
+           name=#{name},
+           type=#{type},
+           sort=#{sort},
+           url=#{url},
+           parentId=#{parentId},
+           permission=#{permission},
+           modifiedUser=#{modifiedUser},
+           modifiedTime=now()
+        where id=#{id}
+    </update>
+
 </mapper>
