@@ -11,7 +11,6 @@ import javax.servlet.ServletException;
  * 此类中负责执行前端控制器以及相关bean组件的加载和注册
  * 说明：此对象要承担web.xml的作用
  */
-@EnableTransactionManagement
 public class AppWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     /**
